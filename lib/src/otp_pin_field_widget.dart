@@ -68,11 +68,11 @@ class OtpPinField extends StatefulWidget {
     this.onPhoneHintSelected,
     this.showDefaultKeyboard = true,
     this.unFocusOnEnding = true,
-    this.controller = TextEditingController()
+    this.controller
   });
 
   @override
   State<StatefulWidget> createState() {
-    return OtpPinFieldState(controller: controller);
+    return OtpPinFieldState(controller: controller??TextEditingController());
   }
 }
