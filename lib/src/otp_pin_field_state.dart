@@ -19,7 +19,7 @@ class OtpPinFieldState extends State<OtpPinField>
   bool ending = false;
   bool hasFocus = false;
 
-  OtpPinFieldState({this.controller})
+  OtpPinFieldState({required this.controller})
 
   @override
   void initState() {
