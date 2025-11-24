@@ -55,6 +55,11 @@ class OtpPinFieldState extends State<OtpPinField>
       curve: Curves.easeIn,
     ));
     _cursorController.repeat();
+
+    if(controller.text.isNotEmpty){
+      _bindTextIntoWidget(controller.text);
+      setState(() {});
+    }
   }
 
   @override
