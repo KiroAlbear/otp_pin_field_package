@@ -12,7 +12,7 @@ import 'gradient_outline_input_border.dart';
 class OtpPinFieldState extends State<OtpPinField>
     with TickerProviderStateMixin, OtpPinAutoFill {
   late FocusNode _focusNode;
-  late List<String> pinsInputed;
+  static late List<String> pinsInputed;
   late AnimationController _cursorController;
   late Animation<double> _cursorAnimation;
   final TextEditingController controller;
@@ -57,7 +57,7 @@ class OtpPinFieldState extends State<OtpPinField>
     _cursorController.repeat();
 
     if(controller.text.isNotEmpty){
-      _bindTextIntoWidget(controller.text);
+      bindTextIntoWidget(controller.text);
       setState(() {});
     }
   }
@@ -127,7 +127,7 @@ class OtpPinFieldState extends State<OtpPinField>
                         if (ending && text.length == widget.maxLength) {
                           return;
                         }
-                        _bindTextIntoWidget(text);
+                        bindTextIntoWidget(text);
                         setState(() {});
                         widget.onChange(text);
                         ending = text.length == widget.maxLength;
@@ -155,7 +155,7 @@ class OtpPinFieldState extends State<OtpPinField>
                         return;
                       }
                       controller.text = controller.text + myText;
-                      _bindTextIntoWidget(controller.text.trim());
+                      bindTextIntoWidget(controller.text.trim());
                       setState(() {});
                       widget.onChange(controller.text.trim());
                       ending =
@@ -171,7 +171,7 @@ class OtpPinFieldState extends State<OtpPinField>
                       _focusNode.requestFocus();
                       controller.text = controller.text
                           .substring(0, controller.text.length - 1);
-                      _bindTextIntoWidget(controller.text.trim());
+                      bindTextIntoWidget(controller.text.trim());
                       setState(() {});
                       widget.onChange(controller.text.trim());
                     },
@@ -227,7 +227,7 @@ class OtpPinFieldState extends State<OtpPinField>
                   if (ending && text.length == widget.maxLength) {
                     return;
                   }
-                  _bindTextIntoWidget(text);
+                  bindTextIntoWidget(text);
                   setState(() {});
                   widget.onChange(text);
                   ending = text.length == widget.maxLength;
@@ -433,7 +433,7 @@ class OtpPinFieldState extends State<OtpPinField>
     return value.isNotEmpty ? display : value;
   }
 
-  void _bindTextIntoWidget(String text) {
+  static void bindTextIntoWidget(String text) {
     for (var i = text.length; i < pinsInputed.length; i++) {
       pinsInputed[i] = '';
     }
